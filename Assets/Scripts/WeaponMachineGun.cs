@@ -13,8 +13,15 @@ public class WeaponMachineGun : WeaponBase {
 
         // if enough time has passed since our last shot compared to our fireDelay, spawn our bullet
         if (currentTime - lastFiredTime > fireDelay) {
+            
+            // Calculate spawn position with offset
+            Vector2 spawnPosition = (Vector2)bulletSpawnPoint.position + bulletOffset;
+
+            // Use spawn point's rotation for bullet direction (optional)
+            Quaternion spawnRotation = bulletSpawnPoint.rotation;
+
             // create our bullet
-            GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, transform.rotation);
+            Instantiate(bullet, spawnPosition, spawnRotation);
             // update our shooting state
             lastFiredTime = currentTime;
         }

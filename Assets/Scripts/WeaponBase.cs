@@ -25,6 +25,15 @@ public abstract class WeaponBase : MonoBehaviour
         get { return bulletSpawnPoint; }
         set { bulletSpawnPoint = value; }
     }
+    
+    [Header("Bullet Offset")]
+    [SerializeField]
+    protected Vector2 bulletOffset = Vector2.up;  // default 1 unit upward
+    public Vector2 BulletOffset
+    {
+        get => bulletOffset;
+        set => bulletOffset = value;
+    }
 
     // State
     protected float lastFiredTime = 0f;

@@ -10,7 +10,7 @@ public class InputScript : MonoBehaviour
 {
     // Variables to hold refs to MovementScript and ShootingScript
     private EngineBase movementScript;
-    private ShootingScript shootingScript;
+    //private ShootingScript shootingScript;
     
     private WeaponBase weapon;
     public WeaponBase Weapon
@@ -30,7 +30,7 @@ public class InputScript : MonoBehaviour
     {
         // Getting the components attached to RigidBody
         movementScript = GetComponent<EngineBase>();
-        shootingScript = GetComponent<ShootingScript>();
+        //shootingScript = GetComponent<ShootingScript>();
         weapon = GetComponent<WeaponBase>();
     }
 
@@ -47,7 +47,7 @@ public class InputScript : MonoBehaviour
                 movementScript.Accelerate(Vector2.right * horizontalInput);
             }
         }
-
+/*
         if (shootingScript != null)
         {
             if (Input.GetButton("Fire1"))
@@ -55,7 +55,7 @@ public class InputScript : MonoBehaviour
                 // Calls function Shoot from ShootingScript if the Fire1 button was pressed
                 shootingScript.Shoot();
             }
-        }
+        }*/
         
         // if we press the Fire1 button
         if (Input.GetButton("Fire1"))
