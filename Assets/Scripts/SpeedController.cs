@@ -9,22 +9,22 @@ public class SpeedController : MonoBehaviour
     [SerializeField] private Vector2 velocityDirection;
 
     // Variable to hold ref to MovementScript 
-    private MovementScript movementScript;
+    private EngineBase engineBase;
 
 
     // Use this for initialization
     void Start()
     {
         // Getting the movementScript component attached to RigidBody
-        movementScript = GetComponent<MovementScript>();
+        engineBase = GetComponent<EngineBase>();
         // Applies velocity to RigidBody
-        movementScript.AddVelocity(velocityDirection);
+        engineBase.AddVelocity(velocityDirection);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Moves the object by calling Move function from movementScript
-        movementScript.Move(direction);
+       engineBase.Accelerate(direction);
     }
 }

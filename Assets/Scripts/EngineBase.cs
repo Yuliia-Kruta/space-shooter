@@ -5,8 +5,8 @@ using UnityEngine;
 public class EngineBase : MonoBehaviour
 {
     // acceleration indicates how fast the enemy accelerates
-    [SerializeField]
-    private float acceleration = 5000f;
+    [SerializeField] private float acceleration = 5000f;
+    [SerializeField] private float velocity = 5f;
 
     // local references
     private Rigidbody2D ourRigidbody;
@@ -28,5 +28,13 @@ public class EngineBase : MonoBehaviour
         Vector2 forceToAdd = direction * acceleration * Time.deltaTime;
         // apply forceToAdd to ourRigidbody
         ourRigidbody.AddForce(forceToAdd);
+    }
+
+    ///<summary>
+    ///Applies velocity to RigidBody
+    ///</summary>
+    public void AddVelocity(Vector2 velocityDirection)
+    {
+        ourRigidbody.velocity = velocityDirection * velocity;
     }
 }
