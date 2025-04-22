@@ -7,7 +7,7 @@ using UnityEngine;
 /// to the appropriate scripts.
 /// </summary>
 public class PlayerInput : MonoBehaviour
-{
+{/*
 
     // local references
     private PlayerMovement playerMovement;
@@ -84,5 +84,5 @@ public class PlayerInput : MonoBehaviour
         Destroy(weapon);
         // set our current weapon to be the newWeapon
         weapon = newWeapon;
-    }
+    }*/
 }

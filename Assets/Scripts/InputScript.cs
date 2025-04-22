@@ -5,13 +5,13 @@ using UnityEngine;
 public class InputScript : MonoBehaviour
 {
     // Variables to hold refs to MovementScript and ShootingScript
-    private MovementScript movementScript;
+    private EngineBase movementScript;
     private ShootingScript shootingScript;
 
     void Start()
     {
         // Getting the components attached to RigidBody
-        movementScript = GetComponent<MovementScript>();
+        movementScript = GetComponent<EngineBase>();
         shootingScript = GetComponent<ShootingScript>();
     }
 
@@ -22,7 +22,7 @@ public class InputScript : MonoBehaviour
         if (horizontalInput != 0.0f)
         {
             // Moves object if there was a Horizontal input
-            movementScript.Move(Vector2.right * horizontalInput);
+            movementScript.Accelerate(Vector2.right * horizontalInput);
         }
 
         if (shootingScript != null)

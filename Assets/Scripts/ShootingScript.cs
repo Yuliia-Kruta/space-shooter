@@ -12,8 +12,8 @@ public class ShootingScript : MonoBehaviour
     void Start()
     {
         // Do some math to perfectly spawn bullets in front of us
-        bulletOffset = GetComponent<Renderer>().bounds.size.y / 2 // Half of our size
-                       + bullet.GetComponent<Renderer>().bounds.size.y / 2; // Plus half of the bullet size
+        //bulletOffset = GetComponent<Renderer>().bounds.size.y / 2 // Half of our size
+                       //+ bullet.GetComponent<Renderer>().bounds.size.y / 2; // Plus half of the bullet size
     }
 
     /// <summary>
