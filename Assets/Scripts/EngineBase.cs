@@ -37,4 +37,20 @@ public class EngineBase : MonoBehaviour
     {
         ourRigidbody.velocity = velocityDirection * velocity;
     }
+    
+    
+    /*
+     *
+     * public void MovePlayer(Vector2 direction)
+       {
+           // a horizontalInput of 0 has no effect, as we want our ship to drift
+           if (direction.magnitude != 0)
+           {
+               //calculate our force to add
+               Vector2 forceToAdd = direction * acceleration * Time.deltaTime;
+               // apply forceToAdd to ourRigidbody
+               ourRigidbody.AddForce(forceToAdd);
+           }
+       }
+     */
 }
