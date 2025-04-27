@@ -24,6 +24,11 @@ public class InputScript : MonoBehaviour
             weapon = value;
         }
     }
+    
+    [SerializeField]
+    private float powerUpDuration = 5f;
+
+    private float powerUpTimer;
 
     void Start()
     {
@@ -57,6 +62,15 @@ public class InputScript : MonoBehaviour
                 weapon.Shoot();
             }
         }
+        
+        if (powerUpTimer > 0)
+        {
+            powerUpTimer -= Time.deltaTime;
+            if (powerUpTimer <= 0)
+            {
+                SwapWeapon(WeaponType.machineGun);
+            }
+        }
     }
     
     
@@ -76,6 +90,7 @@ public class InputScript : MonoBehaviour
                 break;
             case WeaponType.tripleShot:
                 newWeapon = gameObject.AddComponent<WeaponTripleShot>();
+                powerUpTimer = powerUpDuration;
                 break;
         }
 
