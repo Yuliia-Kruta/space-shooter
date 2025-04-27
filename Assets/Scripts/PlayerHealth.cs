@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
         {
             currentHealth = maxHealth;
         }
+        UIManager.instance.UpdatePlayerHealthSlider((float)currentHealth / (float)maxHealth);
     }
 
     /// <summary>
