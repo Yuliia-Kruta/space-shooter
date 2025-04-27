@@ -9,10 +9,8 @@ using UnityEngine;
 /// </summary>
 public class Pickup : MonoBehaviour
 {
-    [SerializeField]
-    public WeaponType weaponType;
-    [SerializeField]
-    private int healAmount = 10;
+    [SerializeField] public WeaponType weaponType;
+    [SerializeField] private int healAmount = 10;
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -43,21 +41,26 @@ public class Pickup : MonoBehaviour
         // get the playerInput from the player
         InputScript playerInput = player.GetComponent<InputScript>();
         // handle a case where the player doesnt have a PlayerInput
-        if (playerInput == null) {
+        if (playerInput == null)
+        {
             Debug.LogError("Player doesn't have a PlayerInput component.");
             return;
-        } 
+        }
+
         if (CompareTag("Pickup")) // the triple shot pickup
         {
             // tell the playerInput to SwapWeapon based on our weaponType
             playerInput.SwapWeapon(weaponType);
         }
-        else if (CompareTag("Heal"))// any other pickup (the health)
+        else if (CompareTag("Heal")) // any other pickup (the health)
         {
             player.GetComponent<IHealth>().Heal(healAmount);
         }
     }
-
 }
 
-public enum WeaponType { machineGun, tripleShot }
+public enum WeaponType
+{
+    machineGun,
+    tripleShot
+}

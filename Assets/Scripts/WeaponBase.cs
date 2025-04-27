@@ -4,31 +4,29 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
+    [Header("Controls")] [SerializeField] protected float fireDelay = 1f;
 
-    [Header("Controls")]
-    [SerializeField]
-    protected float fireDelay = 1f;
+    [SerializeField] protected GameObject bullet;
 
-    [SerializeField]
-    protected GameObject bullet;
     public GameObject Bullet
     {
         get { return bullet; }
         set { bullet = value; }
     }
 
-    [Header("References")]
-    [SerializeField]
+    [Header("References")] [SerializeField]
     protected Transform bulletSpawnPoint;
+
     public Transform BulletSpawnPoint
     {
         get { return bulletSpawnPoint; }
         set { bulletSpawnPoint = value; }
     }
-    
-    [Header("Bullet Offset")]
-    [SerializeField]
-    protected Vector2 bulletOffset = Vector2.up;  // default 1 unit upward
+
+    // Bullet offset for spawning bullet in front of player or enemy
+    [Header("Bullet Offset")] [SerializeField]
+    protected Vector2 bulletOffset = Vector2.up; // default 1 unit upward
+
     public Vector2 BulletOffset
     {
         get => bulletOffset;

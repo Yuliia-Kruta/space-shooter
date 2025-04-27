@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IHealth
 {
-    [SerializeField]
-    protected int currentHealth;
-    public int CurrentHealth { get { return currentHealth; } }
+    [SerializeField] protected int currentHealth;
 
-    [SerializeField]
-    protected int maxHealth;
-    public int MaxHealth { get { return maxHealth; } }
+    public int CurrentHealth
+    {
+        get { return currentHealth; }
+    }
+
+    [SerializeField] protected int maxHealth;
+
+    public int MaxHealth
+    {
+        get { return maxHealth; }
+    }
 
     void Start()
     {
@@ -28,6 +34,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
         {
             currentHealth = maxHealth;
         }
+
         UIManager.instance.UpdatePlayerHealthSlider((float)currentHealth / (float)maxHealth);
     }
 
@@ -53,8 +60,6 @@ public class PlayerHealth : MonoBehaviour, IHealth
     /// </summary>
     public void Die()
     {
-        // would be good to do some death animation here maybe
-        // remove this object from the game
         Destroy(gameObject);
     }
 }

@@ -8,33 +8,26 @@ using UnityEngine;
 /// </summary>
 public class InputScript : MonoBehaviour
 {
-    // Variables to hold refs to MovementScript and ShootingScript
+    // Variables to hold refs to movement and weapon scripts
     private EngineBase movementScript;
-    
+
     private WeaponBase weapon;
+
     public WeaponBase Weapon
     {
-        get
-        {
-            return weapon;
-        }
+        get { return weapon; }
 
-        set
-        {
-            weapon = value;
-        }
+        set { weapon = value; }
     }
-    
-    [SerializeField]
-    private float powerUpDuration = 5f;
 
+    // Duration for power-up effects
+    [SerializeField] private float powerUpDuration = 5f;
     private float powerUpTimer;
 
     void Start()
     {
         // Getting the components attached to RigidBody
         movementScript = GetComponent<EngineBase>();
-        //shootingScript = GetComponent<ShootingScript>();
         weapon = GetComponent<WeaponBase>();
     }
 
@@ -44,36 +37,36 @@ public class InputScript : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         if (horizontalInput != 0.0f)
         {
-            // ensure our playerMovementScript is populated to avoid errors
+            // Move the player if the movement script is available
             if (movementScript != null)
             {
-                // pass our movement input to our playerMovementScript
                 movementScript.Accelerate(Vector2.right * horizontalInput);
             }
         }
 
-        // if we press the Fire1 button
+        // If we press the Fire1 button
         if (Input.GetButton("Fire1"))
         {
-            // if our shootingScript is populated
+            // Shoot if the weapon script is available
             if (weapon != null)
             {
-                // tell shootingScript to shoot
                 weapon.Shoot();
             }
         }
-        
+
+        // Handle power-up timer countdown
         if (powerUpTimer > 0)
         {
             powerUpTimer -= Time.deltaTime;
             if (powerUpTimer <= 0)
             {
+                // Swap back to machine gun when power-up expires
                 SwapWeapon(WeaponType.machineGun);
             }
         }
     }
-    
-    
+
+
     /// <summary>
     /// SwapWeapon handles creating a new WeaponBase component based on the given weaponType. This
     /// will popluate the newWeapon's controls and remove the existing weapon ready for usage.
@@ -90,7 +83,7 @@ public class InputScript : MonoBehaviour
                 break;
             case WeaponType.tripleShot:
                 newWeapon = gameObject.AddComponent<WeaponTripleShot>();
-                powerUpTimer = powerUpDuration;
+                powerUpTimer = powerUpDuration; // Start power-up timer for triple shot
                 break;
         }
 

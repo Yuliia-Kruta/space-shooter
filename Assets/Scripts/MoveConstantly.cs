@@ -7,12 +7,9 @@ using System.Collections;
 /// </summary>
 public class MoveConstantly : MonoBehaviour
 {
+    [SerializeField] private float acceleration = 100f;
 
-    [SerializeField]
-    private float acceleration = 100f;
-
-    [SerializeField]
-    private float initialVelocity = 10f;
+    [SerializeField] private float initialVelocity = 10f;
 
     [SerializeField]
     // our direction to move in
@@ -23,14 +20,17 @@ public class MoveConstantly : MonoBehaviour
     /// It is expected that when setting the direction, the provided Vector2 is a unit vector. If not,
     /// it will be automatically normalised.
     /// </summary>
-    public Vector2 Direction {
-        get {
-            return direction;
-        }
-        set {
-            if (value.magnitude == 1) {
+    public Vector2 Direction
+    {
+        get { return direction; }
+        set
+        {
+            if (value.magnitude == 1)
+            {
                 direction = value;
-            } else {
+            }
+            else
+            {
                 direction = value.normalized;
             }
         }
