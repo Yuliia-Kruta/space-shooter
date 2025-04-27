@@ -11,15 +11,17 @@ public class WeaponTripleShot : WeaponBase {
         // get the current time
         float currentTime = Time.time;
 
-        print("Shoot triple shot");
+        //print("Shoot triple shot");
         // if enough time has passed since our last shot compared to our fireDelay, spawn our bullet
         if (currentTime - lastFiredTime > fireDelay) {
             float x = -0.5f;
+            float horizontalOffset = 0.3f; // Horizontal offset between bullets
             // create 3 bullets
             for (int i = 0; i < 3; i++) {
                 
-                // Calculate spawn position with offset
-                Vector2 spawnPosition = (Vector2)bulletSpawnPoint.position + bulletOffset;
+                // Calculate spawn position with offset + spread bullets horizontally
+                Vector2 spawnPosition = (Vector2)bulletSpawnPoint.position + bulletOffset + new Vector2(horizontalOffset * (i - 1), 0f); 
+
 
                 // Use spawn point's rotation for bullet direction
                 Quaternion spawnRotation = bulletSpawnPoint.rotation;
@@ -28,7 +30,8 @@ public class WeaponTripleShot : WeaponBase {
                 GameObject newBullet = Instantiate(bullet, spawnPosition, spawnRotation);
                 
                 // set their direction
-                newBullet.GetComponent<MoveConstantly>().Direction = new Vector2(x + 0.5f * i, 0.5f);
+                newBullet.GetComponent<MoveConstantly>().Direction = new Vector2(x + 0.5f * i, 0.9f);
+                //Debug.Log(newBullet.GetComponent<MoveConstantly>().Direction);
             }
 
             // update our shooting state
