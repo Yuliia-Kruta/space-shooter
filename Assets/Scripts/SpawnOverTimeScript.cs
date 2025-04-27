@@ -46,6 +46,7 @@ public class SpawnOverTimeScript : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(spawnable.spawnDelay-8);
             Spawn(spawnable.prefab);
             yield return new WaitForSeconds(spawnable.spawnDelay);
         }

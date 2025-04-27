@@ -34,4 +34,16 @@ public class AIMoveAndShoot : MonoBehaviour {
             weapon.Shoot();
         }
     }
+    
+    // Trigger event to detect collision with the border
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the enemy is colliding with the left or right border
+        if (other.CompareTag("Border"))
+        {
+            // Reverse the x-direction to make the enemy move in the opposite direction
+            movementDirection.x = -movementDirection.x;
+        }
+    }
+    
 }

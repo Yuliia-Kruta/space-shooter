@@ -29,8 +29,15 @@ public class WeaponTripleShot : WeaponBase {
                 // create our bullet
                 GameObject newBullet = Instantiate(bullet, spawnPosition, spawnRotation);
                 
-                // set their direction
-                newBullet.GetComponent<MoveConstantly>().Direction = new Vector2(x + 0.5f * i, 0.9f);
+                
+                if (CompareTag("Player")) // if the shooter is the player
+                {
+                    newBullet.GetComponent<MoveConstantly>().Direction = new Vector2(x + 0.5f * i, 0.9f); // upwards
+                }
+                else  // if the shooter is the boss
+                {
+                    newBullet.GetComponent<MoveConstantly>().Direction = new Vector2(x + 0.5f * i, -0.9f); // downwards
+                }
                 //Debug.Log(newBullet.GetComponent<MoveConstantly>().Direction);
             }
 
