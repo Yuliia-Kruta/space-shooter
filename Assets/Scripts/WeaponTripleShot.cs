@@ -17,8 +17,16 @@ public class WeaponTripleShot : WeaponBase {
             float x = -0.5f;
             // create 3 bullets
             for (int i = 0; i < 3; i++) {
+                
+                // Calculate spawn position with offset
+                Vector2 spawnPosition = (Vector2)bulletSpawnPoint.position + bulletOffset;
+
+                // Use spawn point's rotation for bullet direction
+                Quaternion spawnRotation = bulletSpawnPoint.rotation;
+
                 // create our bullet
-                GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, transform.rotation);
+                GameObject newBullet = Instantiate(bullet, spawnPosition, spawnRotation);
+                
                 // set their direction
                 newBullet.GetComponent<MoveConstantly>().Direction = new Vector2(x + 0.5f * i, 0.5f);
             }

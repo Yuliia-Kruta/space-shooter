@@ -46,7 +46,7 @@ public class Pickup : MonoBehaviour
             return;
         } else {
             // tell the playerInput to SwapWeapon based on our weaponType
-            //playerInput.SwapWeapon(weaponType);
+            playerInput.SwapWeapon(weaponType);
         }
     }
 
