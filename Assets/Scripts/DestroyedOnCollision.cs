@@ -10,6 +10,7 @@ public class DestroyedOnCollision : DetectCollisionBase
 {
     protected override void ProcessCollision(GameObject other) {
         base.ProcessCollision(other);
+        Debug.Log("DestroyedOnCollision: " + other.name);
         Destroy(other);
     }
 }

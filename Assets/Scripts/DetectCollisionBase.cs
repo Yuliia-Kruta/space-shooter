@@ -26,6 +26,7 @@ public class DetectCollisionBase : MonoBehaviour
         else if (tagListType == TagListType.Whitelist 
             && !tagInList)
         {
+            Debug.Log("Here1");
             // Destroy if it's a Whitelist and the tag is NOT in the Whitelist
             ProcessCollision(other.gameObject);
         }
@@ -40,6 +41,7 @@ public class DetectCollisionBase : MonoBehaviour
             ProcessCollision(other.gameObject);
         } else if (tagListType == TagListType.Whitelist
               && !tagInList) {
+            Debug.Log("Here2");
             // Destroy if it's a Whitelist and the tag is NOT in the Whitelist
             ProcessCollision(other.gameObject);
         }
@@ -47,7 +49,7 @@ public class DetectCollisionBase : MonoBehaviour
 
     protected virtual void ProcessCollision(GameObject other) {
 
-        print("Detected collision with " + other.name);
+        //print("Detected collision with " + other.name);
     }
 }
 

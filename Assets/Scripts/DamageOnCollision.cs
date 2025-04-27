@@ -15,7 +15,7 @@ public class DamageOnCollision : DetectCollisionBase
         } else {
             Debug.Log(other.name + " does not have an IHealth component");
         }
-
-        Destroy(gameObject);
+//Destroy(gameObject);
+        
     }
 }
